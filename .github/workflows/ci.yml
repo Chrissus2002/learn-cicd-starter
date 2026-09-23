@@ -39,9 +39,9 @@ jobs:
         
       - name: Get the number of files that are not formatted
         run: test -z $(go fmt ./...)
-      
-      - name: Checking code linting
-        run: staticcheck ./...
 
       - name: Check formatting output
         run: echo $?
+
+      - name: Checking code linting
+        run: staticcheck ./...
