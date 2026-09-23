@@ -26,6 +26,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install staticcheck
+        run: go install honnef.co/go/tools/cmd/staticcheck@latest
+
       - name: Check out code
         uses: actions/checkout@v6
 
@@ -36,6 +39,9 @@ jobs:
         
       - name: Get the number of files that are not formatted
         run: test -z $(go fmt ./...)
+      
+      - name: Checking code linting
+        run: staticcheck ./...
 
       - name: Check formatting output
         run: echo $?
